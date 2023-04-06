@@ -26,6 +26,7 @@ class HomeFragment : Fragment() {
 
 
     val categoryList = mutableListOf<Category>()
+    var productlist = mutableListOf<Product>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +52,9 @@ class HomeFragment : Fragment() {
 
         })
         var manager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+
+
+        binding.rcycproduct.adapter = ProductAdapter(productlist)
 
 
         binding.recyclerCategory.adapter = adapter
@@ -79,12 +83,41 @@ class HomeFragment : Fragment() {
 
     fun addarr(){
 
-        categoryList.add(Category("Недвижиость", R.drawable.key))
-        categoryList.add(Category("Транспорт", R.drawable.car))
-        categoryList.add(Category("Работа", R.drawable.job))
-        categoryList.add(Category("Животные", R.drawable.dog))
-        categoryList.add(Category("Дом и сад", R.drawable.chair))
-        categoryList.add(Category("Электроника", R.drawable.laptop))
+        var bolalar = Category("Bolalar dunyosi",R.drawable.stroller)
+        var mulk = Category("Ko'chmas mulk", R.drawable.key)
+        var transport = Category("Transport", R.drawable.car)
+        var ish = Category("Ish", R.drawable.job)
+        var hayvon = Category("Hayvonlar", R.drawable.dog)
+        var bog = Category("Uy va bog'", R.drawable.chair)
+        var tech = Category("Elektr jihozlari", R.drawable.laptop)
+
+        categoryList.add(bolalar)
+        categoryList.add(mulk)
+        categoryList.add(transport)
+        categoryList.add(ish)
+        categoryList.add(hayvon)
+        categoryList.add(bog)
+        categoryList.add(tech)
+
+
+
+        productlist.add(Product("Soat",80000))
+        productlist.add(Product("Soat",80000))
+        productlist.add(Product("Soat",80000))
+        productlist.add(Product("Soat",80000))
+        productlist.add(Product("Soat",80000))
+        productlist.add(Product("Soat",80000))
+        productlist.add(Product("Soat",80000))
+        productlist.add(Product("Soat",80000))
+        productlist.add(Product("Soat",80000))
+        productlist.add(Product("Soat",80000))
+        productlist.add(Product("Soat",80000))
+        productlist.add(Product("Soat",80000))
+        productlist.add(Product("Soat",80000))
+        productlist.add(Product("Soat",80000))
+        productlist.add(Product("Soat",80000))
+
+
 
     }
 }
