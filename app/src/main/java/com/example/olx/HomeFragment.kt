@@ -101,21 +101,17 @@ class HomeFragment : Fragment() {
 
 
 
-        productlist.add(Product("Soat",80000))
-        productlist.add(Product("Soat",80000))
-        productlist.add(Product("Soat",80000))
-        productlist.add(Product("Soat",80000))
-        productlist.add(Product("Soat",80000))
-        productlist.add(Product("Soat",80000))
-        productlist.add(Product("Soat",80000))
-        productlist.add(Product("Soat",80000))
-        productlist.add(Product("Soat",80000))
-        productlist.add(Product("Soat",80000))
-        productlist.add(Product("Soat",80000))
-        productlist.add(Product("Soat",80000))
-        productlist.add(Product("Soat",80000))
-        productlist.add(Product("Soat",80000))
-        productlist.add(Product("Soat",80000))
+        productlist.add(Product("Soat",80000,tech))
+        productlist.add(Product("Oyinchoq",80000,bolalar))
+        productlist.add(Product("Uy",80000,mulk))
+        productlist.add(Product("Velik",80000,transport))
+        productlist.add(Product("Kuchik",80000,hayvon))
+        productlist.add(Product("Soat",80000,tech))
+        productlist.add(Product("Oyinchoq",80000,bolalar))
+        productlist.add(Product("Uy",80000,mulk))
+        productlist.add(Product("Velik",80000,transport))
+        productlist.add(Product("Kuchik",80000,hayvon))
+
 
 
 

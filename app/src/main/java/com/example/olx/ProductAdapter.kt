@@ -9,6 +9,7 @@ class ProductAdapter(var list: MutableList<Product>) : RecyclerView.Adapter<Prod
     class ProductHolder(binding : ProductItemBinding): RecyclerView.ViewHolder(binding.root){
         var name = binding.productName
         var price = binding.productPrice
+        var liked = binding.productLiked
 
     }
 
@@ -23,5 +24,14 @@ class ProductAdapter(var list: MutableList<Product>) : RecyclerView.Adapter<Prod
     override fun onBindViewHolder(holder: ProductHolder, position: Int) {
         holder.name.text = list[position].name
         holder.price.text = list[position].price.toString()
+
+
+        holder.liked.setOnClickListener {
+            if (list[position].isLiked){
+                holder.liked.setImageResource(R.drawable.emptylove)
+            }else{
+                holder.liked.setImageResource(R.drawable.love)
+            }
+        }
     }
 }
