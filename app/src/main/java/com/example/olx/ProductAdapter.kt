@@ -5,11 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.olx.databinding.ProductItemBinding
 
-class ProductAdapter(var list: MutableList<Product>) : RecyclerView.Adapter<ProductAdapter.ProductHolder>() {
+class ProductAdapter(var list: MutableList<Product>, var productInterface: ProductInterface) : RecyclerView.Adapter<ProductAdapter.ProductHolder>() {
     class ProductHolder(binding : ProductItemBinding): RecyclerView.ViewHolder(binding.root){
         var name = binding.productName
         var price = binding.productPrice
         var liked = binding.productLiked
+        var main = binding.productMain
 
     }
 
@@ -33,5 +34,13 @@ class ProductAdapter(var list: MutableList<Product>) : RecyclerView.Adapter<Prod
                 holder.liked.setImageResource(R.drawable.love)
             }
         }
+
+        holder.main.setOnClickListener {
+            productInterface.onClick(list[position])
+        }
+    }
+
+    interface ProductInterface{
+        fun onClick(product: Product)
     }
 }

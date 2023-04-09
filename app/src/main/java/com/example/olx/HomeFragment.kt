@@ -24,7 +24,7 @@ class HomeFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
-
+    lateinit var binding : FragmentHomeBinding
     val categoryList = mutableListOf<Category>()
     var productlist = mutableListOf<Product>()
 
@@ -40,32 +40,37 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var binding = FragmentHomeBinding.inflate(inflater,container,false)
-
+        binding = FragmentHomeBinding.inflate(inflater,container,false)
         addarr()
+        setProductAdapter(productlist)
 
-
-        var adapter = CategoryAdapter(categoryList, object : CategoryAdapter.CategoryInterface{
+        var categoryadapter = CategoryAdapter(categoryList, object : CategoryAdapter.CategoryInterface{
             override fun onClick(category: Category) {
-
+                var list = mutableListOf<Product>()
+                for (i in productlist){
+                    if (i.category == category){
+                        list.add(i)
+                    }
+                }
+                setProductAdapter(list)
             }
 
         })
         var manager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
 
-
-        binding.rcycproduct.adapter = ProductAdapter(productlist)
-
-
-        binding.recyclerCategory.adapter = adapter
+        binding.recyclerCategory.adapter = categoryadapter
         binding.recyclerCategory.layoutManager = manager
 
-
-
-
-
-
         return binding.root
+    }
+
+    fun setProductAdapter(list: MutableList<Product>){
+        binding.rcycproduct.adapter = ProductAdapter(list, object : ProductAdapter.ProductInterface{
+            override fun onClick(product: Product) {
+                parentFragmentManager.beginTransaction().add(R.id.home_container, ProductFragment())
+                    .commit()
+            }
+        })
     }
 
     companion object {
@@ -78,8 +83,6 @@ class HomeFragment : Fragment() {
                 }
             }
     }
-
-
 
     fun addarr(){
 
@@ -99,8 +102,6 @@ class HomeFragment : Fragment() {
         categoryList.add(bog)
         categoryList.add(tech)
 
-
-
         productlist.add(Product("Soat",80000,tech))
         productlist.add(Product("Oyinchoq",80000,bolalar))
         productlist.add(Product("Uy",80000,mulk))
@@ -111,9 +112,6 @@ class HomeFragment : Fragment() {
         productlist.add(Product("Uy",80000,mulk))
         productlist.add(Product("Velik",80000,transport))
         productlist.add(Product("Kuchik",80000,hayvon))
-
-
-
 
     }
 }
